@@ -1,0 +1,47 @@
+<!doctype html>
+<html> 
+<head> 
+<title>SHA256 Hash Generator Online</title>
+	<script src="script.js"></script>
+	<script language="javascript" type="text/javascript">
+	
+function calc()
+{
+	var strTxt = document.getElementById('txt1').value;
+  var strHash = hex_sha256( strTxt );
+	document.getElementById('txt2').value = strHash;
+}
+</script>
+
+</head>
+<body>
+
+<div class="container" >
+	
+	<div id="header">
+		<div id="Logo"></div>
+		<div id="LogoText">Generador</div>
+	</div><!-- header -->
+
+	<div class="sec_blank"></div>
+	
+<div class="PASSAD">
+	
+</div>	
+	
+	<div class="sec_tips">
+	<p>Ingresa tu mensaje</p>
+	 </div>
+	<textarea id="txt1" class="texts"></textarea>
+	<div class="btn_parent">
+		<div class="CalcHash"><button onclick="return calc();">Generar</button></div>
+	</div>
+	
+	<div class="sec_tips">
+	<p>HASH SHA256 </p>
+	</div>
+	
+	<textarea id="txt2" class="texts noboder" ></textarea>
+
+</body> 
+</html>
