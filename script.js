@@ -19,8 +19,8 @@ var b64pad  = ""; /* base-64 pad character. "=" for strict RFC compliance   */
  * These are the functions you'll usually want to call
  * They take string arguments and return either hex or base-64 encoded strings
  */
-function hex_sha256()    { 
-  let s = document.getElementById('txt1').value
+function hex_sha256(s)    { 
+  //let s = document.getElementById('txt1').value
   return rstr2hex(rstr_sha256(str2rstr_utf8(s))); 
   
 }

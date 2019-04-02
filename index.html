@@ -3,15 +3,25 @@
 <head> 
 <title>SHA256 Hash Generator Online</title>
 	<script src="script.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 	<script language="javascript" type="text/javascript">
-	
-function calc()
-{
-	var strTxt = document.getElementById('txt1').value;
-  var strHash = hex_sha256( strTxt );
-	document.getElementById('txt2').value = strHash;
-}
-</script>
+
+	function calc()
+	{
+		var strTxt = document.getElementById('txt1').value;
+	  	var strHash = hex_sha256( strTxt );
+		document.getElementById('txt2').value = strHash;
+		var key=document.getElementById('txt11').value;
+		var encrypted = CryptoJS.AES.encrypt(strTxt+" "+strHash, key);
+
+		var decrypted = CryptoJS.AES.decrypt(encrypted, key);
+
+
+		document.getElementById("demo1").innerHTML = encrypted;
+		document.getElementById("demo2").innerHTML = decrypted;
+		document.getElementById("demo3").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
+	}
+	</script>
 
 </head>
 <body>
@@ -19,8 +29,7 @@ function calc()
 <div class="container" >
 	
 	<div id="header">
-		<div id="Logo"></div>
-		<div id="LogoText">Generador</div>
+		<div id="LogoText">HASH ENCRIPTADO DESENCRIPTADO --> Sacar hash del mensaje y encriptarlo</div>
 	</div><!-- header -->
 
 	<div class="sec_blank"></div>
@@ -33,6 +42,8 @@ function calc()
 	<p>Ingresa tu mensaje</p>
 	 </div>
 	<textarea id="txt1" class="texts"></textarea>
+	<p>Ingresa tu key</p>
+	<textarea id="txt11" class="texts"></textarea>
 	<div class="btn_parent">
 		<div class="CalcHash"><button onclick="return calc();">Generar</button></div>
 	</div>
@@ -43,5 +54,20 @@ function calc()
 	
 	<textarea id="txt2" class="texts noboder" ></textarea>
 
+
+
+
+
+<br><br>
+<label>Encriptado</label>
+<div id="demo1"></div>
+<br>
+
+<label>Desencriptado</label>
+<div id="demo2"></div>
+
+<br>
+<label>Mensaje y hash</label>
+<div id="demo3"></div>
 </body> 
 </html>
